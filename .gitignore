@@ -1,0 +1,5 @@
+/bin/
+STGui/.settings/org.eclipse.jdt.core.prefs
+STGui/.project
+STGui/.DS_Store
+src/Test_Push.java
