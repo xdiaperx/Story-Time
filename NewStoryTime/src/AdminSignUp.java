@@ -41,26 +41,28 @@ public class AdminSignUp {
 	 */
 	private void initialize() {
 		frame = new JFrame();
-		frame.setBounds(100, 100, 450, 300);
+		frame.setBounds(100, 100, 800, 600);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		
 		JLabel lblAuthorizationCode = new JLabel("Authorization Code: ");
-		lblAuthorizationCode.setBounds(95, 125, 130, 16);
+		lblAuthorizationCode.setFont(new Font("Lucida Grande", Font.PLAIN, 17));
+		lblAuthorizationCode.setBounds(275, 124, 201, 44);
 		frame.getContentPane().add(lblAuthorizationCode);
 		
 		textField = new JTextField();
-		textField.setBounds(221, 120, 130, 26);
+		textField.setFont(new Font("Lucida Grande", Font.PLAIN, 17));
+		textField.setBounds(456, 133, 130, 26);
 		frame.getContentPane().add(textField);
 		textField.setColumns(10);
 		
 		JButton btnContinue = new JButton("Continue");
-		btnContinue.setBounds(159, 153, 117, 29);
+		btnContinue.setBounds(456, 231, 117, 29);
 		frame.getContentPane().add(btnContinue);
 		
 		JLabel lblAdmin = new JLabel("Admin Sign Up: ");
-		lblAdmin.setFont(new Font("Lucida Grande", Font.PLAIN, 18));
-		lblAdmin.setBounds(148, 47, 147, 40);
+		lblAdmin.setFont(new Font("Lucida Grande", Font.PLAIN, 23));
+		lblAdmin.setBounds(343, 57, 195, 40);
 		frame.getContentPane().add(lblAdmin);
 		
 		JButton btnBack = new JButton("Back");
@@ -70,7 +72,7 @@ public class AdminSignUp {
 				SignUpClass.main(null);
 			}
 		});
-		btnBack.setBounds(6, 243, 117, 29);
+		btnBack.setBounds(302, 231, 117, 29);
 		frame.getContentPane().add(btnBack);
 	}
 

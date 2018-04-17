@@ -45,57 +45,67 @@ public class RegistrationPage {
 	 */
 	private void initialize() {
 		frame = new JFrame();
-		frame.setBounds(100, 100, 450, 300);
+		frame.setBounds(100, 100, 800, 600);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		
 		JLabel lblRegister = new JLabel("Register");
-		lblRegister.setFont(new Font("Lucida Grande", Font.PLAIN, 16));
-		lblRegister.setBounds(20, 17, 76, 31);
+		lblRegister.setFont(new Font("Lucida Grande", Font.PLAIN, 23));
+		lblRegister.setBounds(20, 36, 182, 47);
 		frame.getContentPane().add(lblRegister);
 		
 		JLabel lblFName = new JLabel("First Name: ");
-		lblFName.setBounds(57, 49, 91, 24);
+		lblFName.setFont(new Font("Lucida Grande", Font.PLAIN, 17));
+		lblFName.setBounds(57, 126, 182, 31);
 		frame.getContentPane().add(lblFName);
 		
 		JLabel lblLName = new JLabel("Last Name: ");
-		lblLName.setBounds(57, 85, 91, 16);
+		lblLName.setFont(new Font("Lucida Grande", Font.PLAIN, 17));
+		lblLName.setBounds(57, 169, 117, 21);
 		frame.getContentPane().add(lblLName);
 		
 		JLabel lblUsername = new JLabel("Username: ");
-		lblUsername.setBounds(57, 113, 96, 29);
+		lblUsername.setFont(new Font("Lucida Grande", Font.PLAIN, 17));
+		lblUsername.setBounds(57, 214, 96, 29);
 		frame.getContentPane().add(lblUsername);
 		
 		JLabel lblPassword = new JLabel("Password: ");
-		lblPassword.setBounds(57, 152, 91, 16);
+		lblPassword.setFont(new Font("Lucida Grande", Font.PLAIN, 17));
+		lblPassword.setBounds(57, 265, 91, 16);
 		frame.getContentPane().add(lblPassword);
 		
 		JLabel lblPassConf = new JLabel("Password Confirmation: ");
-		lblPassConf.setBounds(57, 179, 164, 31);
+		lblPassConf.setFont(new Font("Lucida Grande", Font.PLAIN, 17));
+		lblPassConf.setBounds(57, 304, 230, 40);
 		frame.getContentPane().add(lblPassConf);
 		
 		txtFName = new JTextField();
-		txtFName.setBounds(131, 48, 275, 26);
+		txtFName.setFont(new Font("Lucida Grande", Font.PLAIN, 17));
+		txtFName.setBounds(158, 128, 562, 26);
 		frame.getContentPane().add(txtFName);
 		txtFName.setColumns(10);
 		
 		txtLName = new JTextField();
-		txtLName.setBounds(131, 80, 275, 26);
+		txtLName.setFont(new Font("Lucida Grande", Font.PLAIN, 17));
+		txtLName.setBounds(158, 166, 562, 26);
 		frame.getContentPane().add(txtLName);
 		txtLName.setColumns(10);
 		
 		txtUsername = new JTextField();
-		txtUsername.setBounds(124, 114, 282, 26);
+		txtUsername.setFont(new Font("Lucida Grande", Font.PLAIN, 17));
+		txtUsername.setBounds(158, 215, 562, 26);
 		frame.getContentPane().add(txtUsername);
 		txtUsername.setColumns(10);
 		
 		txtPassword = new JTextField();
-		txtPassword.setBounds(124, 147, 282, 26);
+		txtPassword.setFont(new Font("Lucida Grande", Font.PLAIN, 17));
+		txtPassword.setBounds(158, 260, 569, 26);
 		frame.getContentPane().add(txtPassword);
 		txtPassword.setColumns(10);
 		
 		txtPassConf = new JTextField();
-		txtPassConf.setBounds(210, 181, 196, 26);
+		txtPassConf.setFont(new Font("Lucida Grande", Font.PLAIN, 17));
+		txtPassConf.setBounds(271, 311, 456, 26);
 		frame.getContentPane().add(txtPassConf);
 		txtPassConf.setColumns(10);
 		
@@ -106,7 +116,7 @@ public class RegistrationPage {
 				LoginPage.main(null);
 			}
 		});
-		btnExit.setBounds(122, 222, 117, 29);
+		btnExit.setBounds(271, 371, 117, 29);
 		frame.getContentPane().add(btnExit);
 		
 		JButton btnLogin = new JButton("Login");
@@ -117,7 +127,7 @@ public class RegistrationPage {
 				
 			}
 		});
-		btnLogin.setBounds(237, 222, 117, 29);
+		btnLogin.setBounds(436, 371, 117, 29);
 		frame.getContentPane().add(btnLogin);
 		
 		JButton btnBack = new JButton("Back");
@@ -127,7 +137,7 @@ public class RegistrationPage {
 				SignUpClass.main(null);
 			}
 		});
-		btnBack.setBounds(6, 243, 117, 29);
+		btnBack.setBounds(20, 530, 117, 29);
 		frame.getContentPane().add(btnBack);
 	}
 
