@@ -56,12 +56,12 @@ public class RegistrationPage {
 		
 		JLabel lblFName = new JLabel("First Name: ");
 		lblFName.setFont(new Font("Lucida Grande", Font.PLAIN, 17));
-		lblFName.setBounds(57, 126, 182, 31);
+		lblFName.setBounds(57, 110, 182, 31);
 		frame.getContentPane().add(lblFName);
 		
 		JLabel lblLName = new JLabel("Last Name: ");
 		lblLName.setFont(new Font("Lucida Grande", Font.PLAIN, 17));
-		lblLName.setBounds(57, 169, 117, 21);
+		lblLName.setBounds(57, 166, 117, 21);
 		frame.getContentPane().add(lblLName);
 		
 		JLabel lblUsername = new JLabel("Username: ");
@@ -81,7 +81,7 @@ public class RegistrationPage {
 		
 		txtFName = new JTextField();
 		txtFName.setFont(new Font("Lucida Grande", Font.PLAIN, 17));
-		txtFName.setBounds(158, 128, 562, 26);
+		txtFName.setBounds(158, 112, 562, 26);
 		frame.getContentPane().add(txtFName);
 		txtFName.setColumns(10);
 		
@@ -123,7 +123,19 @@ public class RegistrationPage {
 		btnLogin.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-				String username = txtUsername.getText();
+				String password = txtPassword.getText();
+				String passConf = txtPassConf.getText();
+				
+				
+				if(passConf.equals(password))
+				{
+					HomeScreen.main(null);
+				}
+					
+					
+				//String username = txtUsername.getText();
+				
+				
 				
 			}
 		});
