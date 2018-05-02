@@ -1,7 +1,12 @@
+package StoryTimeRun;
+
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 import javax.swing.JTextField;
+
+import com.sun.xml.internal.ws.util.StringUtils;
+
 import javax.swing.JLabel;
 import javax.swing.JButton;
 import java.awt.Font;
@@ -16,6 +21,11 @@ public class RegistrationPage {
 	private JTextField txtUsername;
 	private JTextField txtPassword;
 	private JTextField txtPassConf;
+	
+	private Member[] membs;
+	private Admin[] admins;
+	private int numOfMembs = 0;
+	private int numOfAdmins = 0;
 
 	/**
 	 * Launch the application.
@@ -74,10 +84,6 @@ public class RegistrationPage {
 		lblPassword.setBounds(57, 265, 91, 16);
 		frame.getContentPane().add(lblPassword);
 		
-		JLabel lblPassConf = new JLabel("Password Confirmation: ");
-		lblPassConf.setFont(new Font("Lucida Grande", Font.PLAIN, 17));
-		lblPassConf.setBounds(57, 304, 230, 40);
-		frame.getContentPane().add(lblPassConf);
 		
 		txtFName = new JTextField();
 		txtFName.setFont(new Font("Lucida Grande", Font.PLAIN, 17));
@@ -103,11 +109,6 @@ public class RegistrationPage {
 		frame.getContentPane().add(txtPassword);
 		txtPassword.setColumns(10);
 		
-		txtPassConf = new JTextField();
-		txtPassConf.setFont(new Font("Lucida Grande", Font.PLAIN, 17));
-		txtPassConf.setBounds(271, 311, 456, 26);
-		frame.getContentPane().add(txtPassConf);
-		txtPassConf.setColumns(10);
 		
 		JButton btnExit = new JButton("Exit");
 		btnExit.addActionListener(new ActionListener() {
@@ -119,12 +120,13 @@ public class RegistrationPage {
 		btnExit.setBounds(271, 371, 117, 29);
 		frame.getContentPane().add(btnExit);
 		
-		JButton btnLogin = new JButton("Login");
+		JButton btnLogin = new JButton("Register");
 		btnLogin.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
-				String username = txtUsername.getText();
-				
+				if(isAlphanumeric(txtPassword.getText())) {
+					Member newMemb = new Member(txtUsername.getText(), txtPassword.getText(), txtFName.getText(), txtLName.getText());
+					addMemb(newMemb);
+				}
 			}
 		});
 		btnLogin.setBounds(436, 371, 117, 29);
@@ -141,4 +143,19 @@ public class RegistrationPage {
 		frame.getContentPane().add(btnBack);
 	}
 
+	boolean isAlphanumeric(String str) {
+	    for (int i=0; i<str.length(); i++) {
+	        char c = str.charAt(i);
+	        if (c < 0x30 || (c >= 0x3a && c <= 0x40) || (c > 0x5a && c <= 0x60) || c > 0x7a)
+	            return false;
+	    }
+
+	    return true;
+	}
+	
+	public void addMemb(Member memb) {
+		membs[numOfMembs] = memb;
+		numOfMembs++;
+	}
+	
 }
