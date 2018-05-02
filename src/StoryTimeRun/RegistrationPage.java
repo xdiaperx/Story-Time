@@ -1,3 +1,4 @@
+
 package StoryTimeRun;
 
 import java.awt.EventQueue;
@@ -157,5 +158,4 @@ public class RegistrationPage {
 		membs[numOfMembs] = memb;
 		numOfMembs++;
 	}
-	
 }
