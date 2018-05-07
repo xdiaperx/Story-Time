@@ -5,6 +5,11 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+
 import javax.swing.JButton;
 import javax.swing.ImageIcon;
 import java.awt.Color;
@@ -48,18 +53,24 @@ public class Story_Page {
 		
 		JLabel lblStoryName = new JLabel("Story Name");
 		lblStoryName.setFont(new Font("Sitka Heading", Font.BOLD, 34));
-		lblStoryName.setBounds(47, 0, 197, 100);
+		lblStoryName.setBounds(47, 19, 435, 66);
 		frame.getContentPane().add(lblStoryName);
 		
-		JLabel lblFormats = new JLabel("Format(s):");
-		lblFormats.setBounds(47, 76, 102, 23);
+		JLabel lblFormats = new JLabel("Format:");
+		lblFormats.setBounds(47, 76, 82, 23);
 		frame.getContentPane().add(lblFormats);
 		
 		JLabel lblGenres = new JLabel("Genre(s):");
-		lblGenres.setBounds(47, 106, 82, 23);
+		lblGenres.setBounds(34, 106, 82, 23);
 		frame.getContentPane().add(lblGenres);
 		
 		JButton btnNewButton = new JButton("Review");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Reviews.main(null);
+				frame.dispose();
+			}
+		});
 		btnNewButton.setBounds(47, 148, 184, 56);
 		frame.getContentPane().add(btnNewButton);
 		
@@ -92,10 +103,6 @@ public class Story_Page {
 		lblConclusion.setFont(new Font("Tahoma", Font.PLAIN, 24));
 		lblConclusion.setBounds(351, 392, 131, 23);
 		frame.getContentPane().add(lblConclusion);
-		
-		JButton btnCharacters = new JButton("Characters");
-		btnCharacters.setBounds(587, 427, 157, 56);
-		frame.getContentPane().add(btnCharacters);
 		
 		JLabel lblNewLabel_4 = new JLabel("");
 		lblNewLabel_4.setIcon(new ImageIcon(Story_Page.class.getResource("/StoryTimeRun/1f937-2642.png")));
@@ -214,7 +221,7 @@ public class Story_Page {
 		
 		JLabel label_9 = new JLabel("00.0%");
 		label_9.setFont(new Font("Tahoma", Font.PLAIN, 17));
-		label_9.setBounds(87, 478, 50, 23);
+		label_9.setBounds(87, 478, 60, 23);
 		frame.getContentPane().add(label_9);
 		
 		JLabel label_10 = new JLabel("00.0%");
@@ -241,5 +248,69 @@ public class Story_Page {
 		label_14.setFont(new Font("Tahoma", Font.PLAIN, 17));
 		label_14.setBounds(458, 478, 51, 23);
 		frame.getContentPane().add(label_14);
+		
+		JLabel lblCharacters = new JLabel("Characters");
+		lblCharacters.setFont(new Font("Tahoma", Font.PLAIN, 24));
+		lblCharacters.setBounds(594, 394, 124, 23);
+		frame.getContentPane().add(lblCharacters);
+		
+		JLabel lblNewLabel_18 = new JLabel("");
+		lblNewLabel_18.setIcon(new ImageIcon(Story_Page.class.getResource("/StoryTimeRun/thumbs-up.png")));
+		lblNewLabel_18.setBounds(566, 429, 53, 50);
+		frame.getContentPane().add(lblNewLabel_18);
+		
+		JLabel lblNewLabel_19 = new JLabel("");
+		lblNewLabel_19.setIcon(new ImageIcon(Story_Page.class.getResource("/StoryTimeRun/thumbs-down.png")));
+		lblNewLabel_19.setBounds(700, 427, 50, 50);
+		frame.getContentPane().add(lblNewLabel_19);
+		
+		JLabel lblNewLabel_20 = new JLabel("");
+		lblNewLabel_20.setIcon(new ImageIcon(Story_Page.class.getResource("/StoryTimeRun/1f937-2642.png")));
+		lblNewLabel_20.setBounds(633, 427, 53, 56);
+		frame.getContentPane().add(lblNewLabel_20);
+		
+		JLabel label_15 = new JLabel("00.0%");
+		label_15.setFont(new Font("Tahoma", Font.PLAIN, 17));
+		label_15.setBounds(566, 477, 50, 23);
+		frame.getContentPane().add(label_15);
+		
+		JLabel label_16 = new JLabel("00.0%");
+		label_16.setFont(new Font("Tahoma", Font.PLAIN, 17));
+		label_16.setBounds(633, 478, 60, 23);
+		frame.getContentPane().add(label_16);
+		
+		JLabel label_17 = new JLabel("00.0%");
+		label_17.setFont(new Font("Tahoma", Font.PLAIN, 17));
+		label_17.setBounds(700, 478, 50, 23);
+		frame.getContentPane().add(label_17);
+		
+		JLabel lblNewLabel_21 = new JLabel("");
+		lblNewLabel_21.setBounds(126, 76, 248, 23);
+		frame.getContentPane().add(lblNewLabel_21);
+		
+		JLabel lblNewLabel_22 = new JLabel("");
+		lblNewLabel_22.setBounds(126, 106, 341, 23);
+		frame.getContentPane().add(lblNewLabel_22);
+		
+		JButton btnNewButton_1 = new JButton("Home Screen");
+		btnNewButton_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				try {
+					HomeScreen.main(null);
+					frame.dispose();
+				} catch (FileNotFoundException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} catch (ClassNotFoundException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+		});
+		btnNewButton_1.setBounds(291, 148, 161, 56);
+		frame.getContentPane().add(btnNewButton_1);
 	}
 }

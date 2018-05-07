@@ -3,21 +3,22 @@ package StoryTimeRun;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
-import javax.swing.JMenuBar;
-import javax.swing.JMenu;
-import javax.swing.JTextField;
-import java.awt.Color;
 import javax.swing.JLabel;
+import java.awt.Font;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+
+import javax.swing.JButton;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class HomeScreen {
 
 	private JFrame frame;
-	private JTextField textField;
 
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
+	public static void main(String[] args) throws FileNotFoundException, IOException, ClassNotFoundException {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
@@ -32,52 +33,126 @@ public class HomeScreen {
 
 	/**
 	 * Create the application.
+	 * @throws ClassNotFoundException 
 	 */
-	public HomeScreen() {
+	public HomeScreen() throws ClassNotFoundException {
 		initialize();
 	}
 
 	/**
 	 * Initialize the contents of the frame.
+	 * @throws ClassNotFoundException 
 	 */
-	private void initialize() {
+	private void initialize() throws ClassNotFoundException {
 		frame = new JFrame();
 		frame.setBounds(100, 100, 800, 600);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		
+		Story[] stors = new Story[12];
+		try {
+			ObjectInputStream in = new ObjectInputStream(new FileInputStream("storiesCSE.txt"));
+			for(int i = 0; i < 2; i++) {
+				stors[i] = (Story) in.readObject();
+			}
+			in.close();
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		frame.getContentPane().setLayout(null);
 		
-		JMenuBar menuBar = new JMenuBar();
-		menuBar.setBounds(0, 0, 794, 22);
-		frame.getContentPane().add(menuBar);
 		
-		JMenu mnHome = new JMenu("Home");
-		menuBar.add(mnHome);
-		
-		JLabel lblHarryPotter = new JLabel("Harry Potter");
-		lblHarryPotter.setBounds(119, 185, 106, 30);
-		frame.getContentPane().add(lblHarryPotter);
-		
-		JLabel lblStarWars = new JLabel("Star Wars");
-		lblStarWars.setBounds(369, 182, 86, 37);
-		frame.getContentPane().add(lblStarWars);
-		
-		JLabel lblNewLabel = new JLabel("Lord of the Rings");
-		lblNewLabel.setBounds(563, 189, 126, 23);
+		JLabel lblNewLabel = new JLabel("Story Time Homepage");
+		lblNewLabel.setBounds(214, 49, 354, 65);
+		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 34));
 		frame.getContentPane().add(lblNewLabel);
 		
-		textField = new JTextField();
-		textField.setBounds(58, 34, 736, 21);
-		frame.getContentPane().add(textField);
-		textField.setBackground(Color.GRAY);
-		textField.setForeground(Color.BLACK);
-		textField.setColumns(10);
+		JButton btnNewButton = new JButton("Logout");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				try {
+					LoginPage.main(null);
+				} catch (FileNotFoundException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				} catch (IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+			}
+		});
+		btnNewButton.setBounds(445, 387, 169, 48);
+		frame.getContentPane().add(btnNewButton);
 		
-		JLabel lblUsernmaeLabel = new JLabel("Usernmae label");
-		lblUsernmaeLabel.setBounds(598, 94, 158, 16);
-		frame.getContentPane().add(lblUsernmaeLabel);
+		JButton btnNewButton_1 = new JButton("Create Story");
+		btnNewButton_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				CreateStory.main(null);
+				frame.dispose();
+			}
+		});
+		btnNewButton_1.setBounds(144, 387, 142, 48);
+		frame.getContentPane().add(btnNewButton_1);
 		
-		JLabel lblSignOut = new JLabel("Sign Out");
-		lblSignOut.setBounds(705, 122, 61, 16);
-		frame.getContentPane().add(lblSignOut);
+		JButton btnNewButton_2 = new JButton("");
+		if(stors[0] != null)
+			btnNewButton_2.setText(stors[0].getStoryName());
+		btnNewButton_2.setBounds(17, 134, 228, 36);
+		btnNewButton_2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				Story_Page.main(null);
+				frame.dispose();
+			}
+		});
+		frame.getContentPane().add(btnNewButton_2);
+		
+		JButton btnNewButton_3 = new JButton("");
+		btnNewButton_3.setBounds(17, 189, 228, 36);
+		frame.getContentPane().add(btnNewButton_3);
+		
+		JButton btnNewButton_4 = new JButton("");
+		btnNewButton_4.setBounds(17, 244, 228, 36);
+		frame.getContentPane().add(btnNewButton_4);
+		
+		JButton btnNewButton_5 = new JButton("");
+		btnNewButton_5.setBounds(17, 299, 228, 36);
+		frame.getContentPane().add(btnNewButton_5);
+		
+		JButton btnNewButton_6 = new JButton("");
+		btnNewButton_6.setBounds(262, 133, 218, 36);
+		frame.getContentPane().add(btnNewButton_6);
+		
+		JButton btnNewButton_7 = new JButton("");
+		btnNewButton_7.setBounds(262, 188, 218, 37);
+		frame.getContentPane().add(btnNewButton_7);
+		
+		JButton btnNewButton_8 = new JButton("");
+		btnNewButton_8.setBounds(262, 244, 218, 36);
+		frame.getContentPane().add(btnNewButton_8);
+		
+		JButton btnNewButton_9 = new JButton("");
+		btnNewButton_9.setBounds(262, 299, 218, 36);
+		frame.getContentPane().add(btnNewButton_9);
+		
+		JButton btnNewButton_10 = new JButton("");
+		btnNewButton_10.setBounds(497, 133, 203, 36);
+		frame.getContentPane().add(btnNewButton_10);
+		
+		JButton btnNewButton_11 = new JButton("");
+		btnNewButton_11.setBounds(497, 189, 203, 36);
+		frame.getContentPane().add(btnNewButton_11);
+		
+		JButton btnNewButton_12 = new JButton("");
+		btnNewButton_12.setBounds(497, 244, 203, 36);
+		frame.getContentPane().add(btnNewButton_12);
+		
+		JButton btnNewButton_13 = new JButton("");
+		btnNewButton_13.setBounds(497, 299, 203, 36);
+		frame.getContentPane().add(btnNewButton_13);
+		
+		
 	}
 }

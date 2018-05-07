@@ -9,10 +9,14 @@ import javax.swing.JTextField;
 import com.sun.xml.internal.ws.util.StringUtils;
 
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JButton;
 import java.awt.Font;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.io.*;
+
+
 
 public class RegistrationPage {
 
@@ -23,15 +27,12 @@ public class RegistrationPage {
 	private JTextField txtPassword;
 	private JTextField txtPassConf;
 	
-	private Member[] membs;
-	private Admin[] admins;
-	private int numOfMembs = 0;
-	private int numOfAdmins = 0;
+	private static int maxMembs = 100;
 
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String[] args) {
+	public static void main(String[] args) throws FileNotFoundException {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
@@ -115,7 +116,16 @@ public class RegistrationPage {
 		btnExit.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-				LoginPage.main(null);
+				try {
+					LoginPage.main(null);
+					frame.dispose();
+				} catch (FileNotFoundException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				} catch (IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 			}
 		});
 		btnExit.setBounds(271, 371, 117, 29);
@@ -125,37 +135,52 @@ public class RegistrationPage {
 		btnLogin.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if(isAlphanumeric(txtPassword.getText())) {
-					Member newMemb = new Member(txtUsername.getText(), txtPassword.getText(), txtFName.getText(), txtLName.getText());
-					addMemb(newMemb);
+					try {
+						Member newMemb = new Member(txtUsername.getText(), txtPassword.getText(), txtFName.getText(), txtLName.getText());
+						ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream("membs.txt"));
+						out.writeObject(newMemb);
+						out.close();
+					} catch (FileNotFoundException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					} catch (IOException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
+					try {
+						HomeScreen.main(null);
+						frame.dispose();
+					} catch (FileNotFoundException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					} catch (ClassNotFoundException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					} catch (IOException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
+				}
+				else
+				{
+					JOptionPane.showMessageDialog(null, "Invalid Passwork", "Login Error", JOptionPane.ERROR_MESSAGE);
+					txtUsername.setText(null);
+					txtPassword.setText(null);
 				}
 			}
 		});
 		btnLogin.setBounds(436, 371, 117, 29);
 		frame.getContentPane().add(btnLogin);
 		
-		JButton btnBack = new JButton("Back");
-		btnBack.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				
-				SignUpClass.main(null);
-			}
-		});
-		btnBack.setBounds(20, 530, 117, 29);
-		frame.getContentPane().add(btnBack);
 	}
-
-	boolean isAlphanumeric(String str) {
+	
+	private boolean isAlphanumeric(String str) {
 	    for (int i=0; i<str.length(); i++) {
 	        char c = str.charAt(i);
 	        if (c < 0x30 || (c >= 0x3a && c <= 0x40) || (c > 0x5a && c <= 0x60) || c > 0x7a)
 	            return false;
 	    }
-
 	    return true;
 	}
 	
-	public void addMemb(Member memb) {
-		membs[numOfMembs] = memb;
-		numOfMembs++;
-	}
 }

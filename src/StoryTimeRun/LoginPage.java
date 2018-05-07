@@ -10,6 +10,10 @@ import javax.swing.JTextField;
 import javax.swing.JSeparator;
 import java.awt.Font;
 import java.awt.event.ActionListener;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.ObjectInputStream;
 import java.awt.event.ActionEvent;
 
 public class LoginPage {
@@ -20,9 +24,11 @@ public class LoginPage {
 
 	/**
 	 * Launch the application.
+	 * @throws IOException 
+	 * @throws FileNotFoundException 
 	 */
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws FileNotFoundException, IOException {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
@@ -85,21 +91,31 @@ public class LoginPage {
 		JButton btnLogin = new JButton("Login");
 		btnLogin.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
-				String username = txtUsername.getText();
-				String password = txtPassword.getText();
-				
-				if(username.contains("Mary") && password.contains("123"))
-				{
-					txtUsername.setText(null);
-					txtPassword.setText(null);
-					HomeScreen.main(null);
-				}
-				else
-				{
-					JOptionPane.showMessageDialog(null, "Incorrect Login Info", "Login Error", JOptionPane.ERROR_MESSAGE);
-					txtUsername.setText(null);
-					txtPassword.setText(null);
+				try {
+					boolean log = false;
+					ObjectInputStream in = new ObjectInputStream(new FileInputStream("membs.txt"));
+					for(int i = 0; i < Member.numOfMembs; i++) {
+						Member cur = (Member) in.readObject();
+						if(txtUsername.getText().equals(cur.getUsername()) && txtPassword.getText().equals(cur.getPassword())) {
+							in.close();
+							log = true;
+							HomeScreen.main(null);
+						}
+						if(!log) {
+							JOptionPane.showMessageDialog(null, "Incorrect Login Info", "Login Error", JOptionPane.ERROR_MESSAGE);
+							txtUsername.setText(null);
+							txtPassword.setText(null);
+						}
+					}
+				} catch (FileNotFoundException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				} catch (ClassNotFoundException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				} catch (IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
 				}
 			}
 		});
@@ -116,23 +132,17 @@ public class LoginPage {
 		lblPassword.setBounds(285, 151, 83, 23);
 		frame.getContentPane().add(lblPassword);
 		
-		JSeparator separator = new JSeparator();
-		separator.setBounds(46, 73, 736, 12);
-		frame.getContentPane().add(separator);
-		
-		JSeparator separator_1 = new JSeparator();
-		separator_1.setBounds(49, 168, 310, 1);
-		frame.getContentPane().add(separator_1);
-		
-		JSeparator separator_2 = new JSeparator();
-		separator_2.setBounds(46, 240, 736, 14);
-		frame.getContentPane().add(separator_2);
 		
 		JButton btnSignUp = new JButton("Sign Up");
 		btnSignUp.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
-				SignUpClass.main(null);
+				try {
+					RegistrationPage.main(null);
+					frame.dispose();
+				} catch (FileNotFoundException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 			}
 		});
 		btnSignUp.setBounds(380, 280, 117, 29);
