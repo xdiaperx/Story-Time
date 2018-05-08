@@ -103,7 +103,9 @@ public class HomeScreen {
 		btnNewButton_2.setBounds(17, 134, 228, 36);
 		btnNewButton_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				Story_Page.main(null);
+				//String storyName = stors[0].getStoryName();
+			//String genre = stors[0].getGenre();
+				new Story_Page("Avengers", "Movie", "Action").frame.setVisible(true);;
 				frame.dispose();
 			}
 		});

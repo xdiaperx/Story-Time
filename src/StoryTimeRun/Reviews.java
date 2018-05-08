@@ -11,12 +11,15 @@ import java.io.FileNotFoundException;
 
 import javax.swing.JRadioButton;
 import javax.swing.SwingConstants;
+import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 
 public class Reviews {
 
 	private JFrame frame;
-
+	public int introLike = 0;
+	public int introDislike = 0;
+	public int introNeither = 0;
 	/**
 	 * Launch the application.
 	 */
@@ -75,6 +78,11 @@ public class Reviews {
 		rdbtnNewRadioButton_2.setBounds(81, 256, 122, 40);
 		frame.getContentPane().add(rdbtnNewRadioButton_2);
 		
+		ButtonGroup group1 = new ButtonGroup();
+		group1.add(rdbtnNewRadioButton);
+		group1.add(rdbtnNewRadioButton_1);
+		group1.add(rdbtnNewRadioButton_2);
+		
 		JLabel lblNewLabel = new JLabel("Main Plot:");
 		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 22));
 		lblNewLabel.setBounds(325, 155, 109, 23);
@@ -94,6 +102,11 @@ public class Reviews {
 		rdbtnNeither.setFont(new Font("Tahoma", Font.PLAIN, 22));
 		rdbtnNeither.setBounds(335, 261, 122, 31);
 		frame.getContentPane().add(rdbtnNeither);
+		
+		ButtonGroup group2 = new ButtonGroup();
+		group2.add(rdbtnNewRadioButton_3);
+		group2.add(rdbtnDislike);
+		group2.add(rdbtnNeither);
 		
 		JLabel lblSubplots = new JLabel("Subplot(s):");
 		lblSubplots.setFont(new Font("Tahoma", Font.PLAIN, 22));
@@ -115,6 +128,11 @@ public class Reviews {
 		rdbtnNeither_1.setBounds(570, 262, 132, 31);
 		frame.getContentPane().add(rdbtnNeither_1);
 		
+		ButtonGroup group3 = new ButtonGroup();
+		group3.add(rdbtnLike);
+		group3.add(rdbtnDislike_1);
+		group3.add(rdbtnNeither_1);
+		
 		JLabel lblClimax = new JLabel("Climax:");
 		lblClimax.setFont(new Font("Tahoma", Font.PLAIN, 22));
 		lblClimax.setBounds(97, 339, 132, 23);
@@ -134,6 +152,11 @@ public class Reviews {
 		rdbtnNewRadioButton_6.setFont(new Font("Tahoma", Font.PLAIN, 22));
 		rdbtnNewRadioButton_6.setBounds(81, 440, 116, 31);
 		frame.getContentPane().add(rdbtnNewRadioButton_6);
+		
+		ButtonGroup group4 = new ButtonGroup();
+		group4.add(rdbtnNewRadioButton_4);
+		group4.add(rdbtnNewRadioButton_5);
+		group4.add(rdbtnNewRadioButton_6);
 		
 		JLabel lblConclusion = new JLabel("Conclusion:");
 		lblConclusion.setFont(new Font("Tahoma", Font.PLAIN, 22));
@@ -155,6 +178,11 @@ public class Reviews {
 		rdbtnNeither_2.setBounds(325, 441, 116, 31);
 		frame.getContentPane().add(rdbtnNeither_2);
 		
+		ButtonGroup group5 = new ButtonGroup();
+		group5.add(rdbtnNewRadioButton_7);
+		group5.add(rdbtnDislike_2);
+		group5.add(rdbtnNeither_2);
+		
 		JLabel lblCharacters = new JLabel("Characters:");
 		lblCharacters.setFont(new Font("Tahoma", Font.PLAIN, 22));
 		lblCharacters.setBounds(560, 340, 131, 23);
@@ -174,6 +202,11 @@ public class Reviews {
 		rdbtnNewRadioButton_10.setFont(new Font("Tahoma", Font.PLAIN, 22));
 		rdbtnNewRadioButton_10.setBounds(570, 441, 179, 31);
 		frame.getContentPane().add(rdbtnNewRadioButton_10);
+		
+		ButtonGroup group6 = new ButtonGroup();
+		group6.add(rdbtnNewRadioButton_8);
+		group6.add(rdbtnNewRadioButton_9);
+		group6.add(rdbtnNewRadioButton_10);
 		
 		JButton btnNewButton = new JButton("Done");
 		btnNewButton.addActionListener(new ActionListener() {

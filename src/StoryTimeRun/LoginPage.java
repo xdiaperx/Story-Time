@@ -100,6 +100,7 @@ public class LoginPage {
 							in.close();
 							log = true;
 							HomeScreen.main(null);
+							frame.disable();
 						}
 						if(!log) {
 							JOptionPane.showMessageDialog(null, "Incorrect Login Info", "Login Error", JOptionPane.ERROR_MESSAGE);

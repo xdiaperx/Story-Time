@@ -16,7 +16,10 @@ import java.awt.Color;
 
 public class Story_Page {
 
-	private JFrame frame;
+	public JFrame frame;
+	private String storyName;
+	private String format;
+	private String genre;
 
 	/**
 	 * Launch the application.
@@ -40,6 +43,13 @@ public class Story_Page {
 	public Story_Page() {
 		initialize();
 	}
+	
+	public Story_Page(String storName, String gen, String form) {
+		storyName = storName;
+		format = form;
+		genre = gen;
+		initialize();
+	}
 
 	/**
 	 * Initialize the contents of the frame.
@@ -53,11 +63,13 @@ public class Story_Page {
 		
 		JLabel lblStoryName = new JLabel("Story Name");
 		lblStoryName.setFont(new Font("Sitka Heading", Font.BOLD, 34));
-		lblStoryName.setBounds(47, 19, 435, 66);
+		lblStoryName.setBounds(47, 19, 354, 68);
 		frame.getContentPane().add(lblStoryName);
 		
+		lblStoryName.setText(storyName);
+		
 		JLabel lblFormats = new JLabel("Format:");
-		lblFormats.setBounds(47, 76, 82, 23);
+		lblFormats.setBounds(47, 76, 73, 23);
 		frame.getContentPane().add(lblFormats);
 		
 		JLabel lblGenres = new JLabel("Genre(s):");
@@ -284,14 +296,6 @@ public class Story_Page {
 		label_17.setBounds(700, 478, 50, 23);
 		frame.getContentPane().add(label_17);
 		
-		JLabel lblNewLabel_21 = new JLabel("");
-		lblNewLabel_21.setBounds(126, 76, 248, 23);
-		frame.getContentPane().add(lblNewLabel_21);
-		
-		JLabel lblNewLabel_22 = new JLabel("");
-		lblNewLabel_22.setBounds(126, 106, 341, 23);
-		frame.getContentPane().add(lblNewLabel_22);
-		
 		JButton btnNewButton_1 = new JButton("Home Screen");
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -312,5 +316,17 @@ public class Story_Page {
 		});
 		btnNewButton_1.setBounds(291, 148, 161, 56);
 		frame.getContentPane().add(btnNewButton_1);
+		
+		JLabel lblNewLabel_21 = new JLabel("New label");
+		lblNewLabel_21.setBounds(133, 106, 418, 23);
+		frame.getContentPane().add(lblNewLabel_21);
+		
+		lblNewLabel_21.setText(format);
+		
+		JLabel lblNewLabel_22 = new JLabel("New label");
+		lblNewLabel_22.setBounds(133, 76, 418, 23);
+		frame.getContentPane().add(lblNewLabel_22);
+		
+		lblNewLabel_22.setText(genre);
 	}
 }
