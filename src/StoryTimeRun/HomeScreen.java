@@ -17,6 +17,7 @@ import java.awt.event.ActionEvent;
 public class HomeScreen {
 
 	private JFrame frame;
+	private Story stor;
 
 	public static void main(String[] args) throws FileNotFoundException, IOException, ClassNotFoundException {
 		EventQueue.invokeLater(new Runnable() {
@@ -51,9 +52,7 @@ public class HomeScreen {
 		Story[] stors = new Story[12];
 		try {
 			ObjectInputStream in = new ObjectInputStream(new FileInputStream("storiesCSE.txt"));
-			for(int i = 0; i < 2; i++) {
-				stors[i] = (Story) in.readObject();
-			}
+			stor = (Story) in.readObject();
 			in.close();
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
@@ -98,14 +97,12 @@ public class HomeScreen {
 		frame.getContentPane().add(btnNewButton_1);
 		
 		JButton btnNewButton_2 = new JButton("");
-		if(stors[0] != null)
-			btnNewButton_2.setText(stors[0].getStoryName());
+		if(stor != null)
+			btnNewButton_2.setText(stor.getStoryName());
 		btnNewButton_2.setBounds(17, 134, 228, 36);
 		btnNewButton_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				//String storyName = stors[0].getStoryName();
-			//String genre = stors[0].getGenre();
-				new Story_Page("Avengers", "Movie", "Action").frame.setVisible(true);;
+				new Story_Page(stor.getStoryName(), stor.getFormat(), stor.getGenre()).frame.setVisible(true);
 				frame.dispose();
 			}
 		});

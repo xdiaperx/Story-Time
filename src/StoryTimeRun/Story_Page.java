@@ -186,7 +186,10 @@ public class Story_Page {
 		lblNewLabel_17.setBounds(456, 432, 53, 47);
 		frame.getContentPane().add(lblNewLabel_17);
 		
-		JLabel label = new JLabel("00.0%");
+		if(DoReview.introTot > 1)
+			DoReview.mainTot--;
+		
+		JLabel label = new JLabel(Double.toString(((DoReview.introLike / DoReview.introTot) * 1000.0) / 10.0) + "%");
 		label.setFont(new Font("Tahoma", Font.PLAIN, 17));
 		label.setBounds(87, 318, 60, 23);
 		frame.getContentPane().add(label);
